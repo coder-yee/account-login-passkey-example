@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        登录 · Account Login + Passkey
+    </title>
+
+    <link
+            rel="stylesheet"
+            href="style.css"
+    >
+
+    <script src="i18n.js" defer></script>
+</head>
+
+<body>
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+        <div class="auth-logo">
+            🔐
+        </div>
+
+        <h1 class="auth-title">
+            账户登录
+        </h1>
+
+        <p class="auth-description">
+            使用账户名和密码登录，
+            或直接使用 Passkey 登录。
+        </p>
+
+
+        <div
+                id="errorMessage"
+                class="alert alert-error hidden"
+        ></div>
+
+
+        <div
+                id="successMessage"
+                class="alert alert-success hidden"
+        ></div>
+
+
+        <!--
+            Traditional Mock Login
+        -->
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label
+                        class="form-label"
+                        for="username"
+                >
+                    账户名
+                </label>
+
+                <input
+                        id="username"
+                        class="input"
+                        type="text"
+                        placeholder="例如：coder-yee"
+                        autocomplete="username"
+                        required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label
+                        class="form-label"
+                        for="password"
+                >
+                    密码
+                </label>
+
+                <input
+                        id="password"
+                        class="input"
+                        type="password"
+                        placeholder="请输入密码"
+                        autocomplete="current-password"
+                        required
+                >
+
+            </div>
+
+
+            <button
+                    id="loginAccountButton"
+                    class="button button-primary button-full button-large"
+                    type="submit"
+            >
+                账户登录
+            </button>
+
+        </form>
+
+
+        <div class="divider">
+            或
+        </div>
+
+
+        <!--
+            Passkey Login
+        -->
+
+        <button
+                id="passkeyLoginButton"
+                class="button button-secondary button-full button-large"
+                type="button"
+        >
+            🔑 使用 Passkey 登录
+        </button>
+
+
+        <div class="auth-footer">
+
+            还没有账户？
+
+            <a href="register.html">
+                创建账户
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script
+        src="../mock/api.js"
+></script>
+
+<script
+        src="app.js"
+></script>
+
+</body>
+
+</html>

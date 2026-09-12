@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        创建账户 · Account Login + Passkey
+    </title>
+
+    <link
+            rel="stylesheet"
+            href="style.css"
+    >
+
+    <script src="i18n.js" defer></script>
+</head>
+
+<body>
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+        <div class="auth-logo">
+            🔐
+        </div>
+
+        <h1 class="auth-title">
+            创建账户
+        </h1>
+
+        <p class="auth-description">
+            创建一个本地 Demo 账户，
+            然后为账户注册 Passkey。
+        </p>
+
+
+        <div
+                id="errorMessage"
+                class="alert alert-error hidden"
+        ></div>
+
+
+        <div
+                id="successMessage"
+                class="alert alert-success hidden"
+        ></div>
+
+
+        <form id="registerForm">
+
+            <div class="form-group">
+
+                <label
+                        class="form-label"
+                        for="username"
+                >
+                    账户名
+                </label>
+
+                <input
+                        id="username"
+                        class="input"
+                        type="text"
+                        placeholder="例如：coder-yee"
+                        autocomplete="username"
+                        minlength="3"
+                        required
+                >
+
+            </div>
+
+
+            <button
+                    id="registerAccountButton"
+                    class="button button-primary button-full button-large"
+                    type="submit"
+            >
+                创建账户
+            </button>
+
+        </form>
+
+
+        <div class="auth-footer">
+
+            已经有账户？
+
+            <a href="login.html">
+                返回登录
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script
+        src="../mock/api.js"
+></script>
+
+<script
+        src="app.js"
+></script>
+
+</body>
+
+</html>

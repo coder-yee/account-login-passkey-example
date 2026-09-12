@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Passkey 管理 · Account Login
+    </title>
+
+    <link
+            rel="stylesheet"
+            href="style.css"
+    >
+
+    <script src="i18n.js" defer></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header class="header">
+
+        <a
+                href="index.html"
+                class="brand"
+        >
+
+            <div class="brand-icon">
+                🔐
+            </div>
+
+            <div>
+
+                <div class="brand-title">
+                    Account Login + Passkey
+                </div>
+
+                <div class="brand-subtitle">
+                    Passkey Management
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <nav
+                id="headerAccount"
+                class="header-nav"
+        ></nav>
+
+    </header>
+
+
+    <section class="card">
+
+        <h1 class="card-title">
+            Passkey 管理
+        </h1>
+
+        <p class="card-description">
+            管理当前账户已经注册的 Passkey。
+            注册新的 Passkey 前需要验证当前账户密码。
+            Passkey 本身由浏览器和操作系统安全保存，
+            服务器只保存 Credential 元数据。
+        </p>
+
+
+        <div
+                id="errorMessage"
+                class="alert alert-error hidden"
+        ></div>
+
+
+        <div
+                id="successMessage"
+                class="alert alert-success hidden"
+        ></div>
+
+
+        <div class="form-group">
+
+            <label
+                    class="form-label"
+                    for="password"
+            >
+                当前账户密码
+            </label>
+
+            <input
+                    id="password"
+                    class="input"
+                    type="password"
+                    placeholder="请输入当前账户密码"
+                    autocomplete="current-password"
+                    required
+            >
+
+        </div>
+
+
+        <button
+                id="registerPasskeyButton"
+                class="button button-primary button-large"
+        >
+            🔑 验证密码并注册 Passkey
+        </button>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2 class="card-title">
+            我的 Passkeys
+        </h2>
+
+        <p class="card-description">
+            可以为同一个账户注册多个设备上的 Passkey。
+        </p>
+
+
+        <div id="passkeyList">
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    ⏳
+                </div>
+
+                <div class="empty-title">
+                    正在加载
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2 class="card-title">
+            WebAuthn Architecture
+        </h2>
+
+        <p class="card-description">
+            浏览器负责调用操作系统的 Authenticator，
+            FastAPI 负责处理真实的后端逻辑，包括 Challenge、
+            Credential 和 Session 管理。
+        </p>
+
+
+        <div class="flow">
+
+            <div class="flow-item">
+
+                <div class="flow-number">
+                    CLIENT
+                </div>
+
+                <div class="flow-title">
+                    HTML / JavaScript
+                </div>
+
+            </div>
+
+
+            <div class="flow-item">
+
+                <div class="flow-number">
+                    API
+                </div>
+
+                <div class="flow-title">
+                    FastAPI
+                </div>
+
+            </div>
+
+
+            <div class="flow-item">
+
+                <div class="flow-number">
+                    WEB
+                </div>
+
+                <div class="flow-title">
+                    WebAuthn
+                </div>
+
+            </div>
+
+
+            <div class="flow-item">
+
+                <div class="flow-number">
+                    OS
+                </div>
+
+                <div class="flow-title">
+                    Authenticator
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+        Passkey / WebAuthn / FIDO2
+
+    </footer>
+
+</div>
+
+
+<script
+        src="api.js"
+></script>
+
+<script
+        src="app.js"
+></script>
+
+</body>
+
+</html>

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Account Login + Passkey Example
+    </title>
+
+    <link
+            rel="stylesheet"
+            href="style.css"
+    >
+    <script src="i18n.js" defer></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header class="header">
+
+        <a
+                href="index.html"
+                class="brand"
+        >
+            <div class="brand-icon">
+                🔐
+            </div>
+
+            <div>
+                <div class="brand-title">
+                    Account Login + Passkey
+                </div>
+
+                <div class="brand-subtitle">
+                    WebAuthn Reference Example
+                </div>
+            </div>
+        </a>
+
+        <nav
+                id="headerAccount"
+                class="header-nav"
+        >
+            <a href="login.html">
+                登录
+            </a>
+        </nav>
+
+    </header>
+
+
+    <section class="hero">
+
+        <div class="eyebrow">
+            PASSKEY · WEBAUTHN · FIDO2
+        </div>
+
+        <h1>
+            Account Login
+            <br>
+            with Passkey
+        </h1>
+
+        <p class="hero-description">
+            一个使用浏览器原生 WebAuthn API、
+            FastAPI、MySQL 和真实 WebAuthn 服务端验证构建的
+            Passkey 账户登录完整参考实现。
+        </p>
+
+        <div class="hero-actions">
+
+            <a
+                    href="register.html"
+                    class="button button-primary button-large"
+                    data-guest-auth
+            >
+                创建账户
+            </a>
+
+            <a
+                    href="login.html"
+                    class="button button-secondary button-large"
+                    data-guest-auth
+            >
+                登录
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <div class="account-panel">
+
+            <div>
+
+                <div class="account-label">
+                    当前账户
+                </div>
+
+                <div
+                        id="homeAccount"
+                        class="account-name"
+                >
+                    未登录
+                </div>
+
+            </div>
+
+            <div
+                    id="homeStatus"
+                    class="status"
+            >
+                未登录
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="feature-grid">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔑
+            </div>
+
+            <div class="feature-title">
+                Passkey Registration
+            </div>
+
+            <div class="feature-description">
+                使用浏览器原生 WebAuthn API
+                注册真实 Passkey。
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                👆
+            </div>
+
+            <div class="feature-title">
+                Biometric Login
+            </div>
+
+            <div class="feature-description">
+                支持 Touch ID、Face ID、
+                Windows Hello 等系统认证。
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🗄️
+            </div>
+
+            <div class="feature-title">
+                Real API + MySQL
+            </div>
+
+            <div class="feature-description">
+                FastAPI 提供真实 HTTP 接口，
+                MySQL 保存账户、Session 和 Passkey。
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2 class="card-title">
+            Authentication Flow
+        </h2>
+
+        <p class="card-description">
+            这个 Demo 展示真实的账户登录
+            与 Passkey 集成流程。
+        </p>
+
+        <div class="flow">
+
+            <div class="flow-item">
+
+                <div class="flow-number">
+                    STEP 01
+                </div>
+
+                <div class="flow-title">
+                    创建账户
+                </div>
+
+            </div>
+
+            <div class="flow-item">
+
+                <div class="flow-number">
+                    STEP 02
+                </div>
+
+                <div class="flow-title">
+                    注册 Passkey
+                </div>
+
+            </div>
+
+            <div class="flow-item">
+
+                <div class="flow-number">
+                    STEP 03
+                </div>
+
+                <div class="flow-title">
+                    启用 Passkey
+                </div>
+
+            </div>
+
+            <div class="flow-item">
+
+                <div class="flow-number">
+                    STEP 04
+                </div>
+
+                <div class="flow-title">
+                    Passkey 登录
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+        Account Login Passkey Example ·
+        WebAuthn / FIDO2
+    </footer>
+
+</div>
+
+<script
+        src="api.js"
+></script>
+
+<script
+        src="app.js"
+></script>
+
+<script>
+    // 已登录时，隐藏注册 / 登录按钮。
+    // 认证状态由当前版本自己的 API 决定：
+    // Simple -> Mock API；Complete Python -> FastAPI。
+    (async function () {
+        try {
+            const session = await MockAPI.getSession();
+
+            if (session) {
+                document
+                    .querySelectorAll("[data-guest-auth]")
+                    .forEach(button => {
+                        button.style.display = "none";
+                    });
+            }
+        } catch (error) {
+            console.warn(
+                "Unable to check login status",
+                error
+            );
+        }
+    })();
+</script>
+
+</body>
+
+</html>
